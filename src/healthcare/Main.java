@@ -18,9 +18,9 @@ public class Main {
         Hospital h2 = new Hospital("Medical Assisstance Group", 300, 4.8);
 
         Appointment[] appointments = {
-                new Appointment(p1, doc1, "12.15.2025"),
-                new Appointment(p2, doc1, "12.15.2025"),
-                new Appointment(p3, doc2, "12.15.2025")
+                new Appointment(p1, doc1, "15.12.2025"),
+                new Appointment(p2, doc1, "15.12.2025"),
+                new Appointment(p3, doc2, "15.12.2025")
         };
 
         System.out.println("=== HEALTHCARE INFO ===");
