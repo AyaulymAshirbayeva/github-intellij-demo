@@ -3,8 +3,8 @@ package healthcare;
 public class Hospital {
 
     private String name;
-    private int capacity; // число коек
-    private double rating; // от 0 до 5
+    private int capacity;
+    private double rating;
 
     public Hospital() {
     }

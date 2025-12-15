@@ -4,7 +4,7 @@ public class Patient {
 
     private String name;
     private int age;
-    private Ward ward; // палата, где лежит пациент
+    private Ward ward;
 
     public Patient() {
     }
