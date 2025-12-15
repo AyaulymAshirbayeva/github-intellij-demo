@@ -15,18 +15,27 @@ public class Patient {
         this.ward = ward;
     }
 
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
     public void setName(String name) {
-        this.name = name; }
+        this.name = name;
+    }
 
-    public int getAge() { return age; }
+    public int getAge() {
+        return age;
+    }
     public void setAge(int age) {
-        this.age = age; }
+        this.age = age;
+    }
 
 
-    public Ward getWard() { return ward; }
+    public Ward getWard() {
+        return ward;
+    }
     public void setWard(Ward ward) {
-        this.ward = ward; }
+        this.ward = ward;
+    }
 
     public void printInfo() {
         System.out.println("Patient -> Name: " + name + ", Age: " + age + ", Ward: " + ward.getWardNumber());

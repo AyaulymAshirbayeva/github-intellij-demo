@@ -17,7 +17,8 @@ public class Ward {
         return wardNumber;
     }
     public void setWardNumber(int wardNumber) {
-        this.wardNumber = wardNumber; }
+        this.wardNumber = wardNumber;
+    }
 
 
     public int getBeds() {
