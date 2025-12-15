@@ -39,11 +39,4 @@ public class Hospital {
     public void printInfo() {
         System.out.println("Hospital -> Name: " + name + ", Capacity: " + capacity + ", Rating: " + rating);
     }
-    public int compareRating(Hospital other) {
-        return Double.compare(this.rating, other.rating);
-    }
-
-    public int compareCapacity(Hospital other) {
-        return Integer.compare(this.capacity, other.capacity);
-    }
 }

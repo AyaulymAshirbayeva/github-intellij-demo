@@ -15,14 +15,21 @@ public class Appointment {
         this.date = date;
     }
 
-    public Patient getPatient() { return patient; }
-    public void setPatient(Patient patient) { this.patient = patient; }
 
-    public MedProfessional getDoctor() { return doctor; }
-    public void setDoctor(MedProfessional doctor) { this.doctor = doctor; }
+    public Patient getPatient() {
+        return patient; }
+    public void setPatient(Patient patient) {
+        this.patient = patient; }
 
-    public String getDate() { return date; }
-    public void setDate(String date) { this.date = date; }
+    public MedProfessional getDoctor() {
+        return doctor; }
+    public void setDoctor(MedProfessional doctor) {
+        this.doctor = doctor; }
+
+    public String getDate() {
+        return date; }
+    public void setDate(String date) {
+        this.date = date; }
 
     public void printInfo() {
         System.out.println("Appointment -> Patient: " + patient.getName() +
