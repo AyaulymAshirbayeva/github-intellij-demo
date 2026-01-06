@@ -1,50 +1,24 @@
 package healthcare;
 
-public class MedProfessional {
-    private String name;
+public class MedProfessional extends Person {
+
     private String specialization;
     private int experience;
 
-    public MedProfessional(){
-    }
-    public MedProfessional(String name, String specialization, int experience) {
-    this.name = name;
-    this.specialization = specialization;
-    this.experience = experience;
-    }
-
-
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSpecialization() {
-        return specialization;
-    }
-    public void setSpecialization(String specialization) {
+    public MedProfessional(String name, int age, String specialization, int experience) {
+        super(name, age);
         this.specialization = specialization;
+        this.experience = experience;
     }
-
 
     public int getExperience() {
         return experience;
     }
-    public void setExperience(int experience) {
-        this.experience = experience;
-    }
 
-
+    @Override
     public void printInfo() {
-        System.out.println("MedicalProfessional -> Name: " + name +
+        System.out.println("Doctor -> Name: " + name +
                 ", Specialization: " + specialization +
-                ", Experience: " + experience +
-                " years");
+                ", Experience: " + experience + " years");
     }
-
 }
-
-
-

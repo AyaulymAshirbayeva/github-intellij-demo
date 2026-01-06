@@ -1,13 +1,10 @@
 package healthcare;
 
-public class Hospital {
+public final class Hospital implements Printable {
 
     private String name;
     private int capacity;
     private double rating;
-
-    public Hospital() {
-    }
 
     public Hospital(String name, int capacity, double rating) {
         this.name = name;
@@ -15,28 +12,19 @@ public class Hospital {
         this.rating = rating;
     }
 
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
+    public double getRating() {
+        return rating;
     }
 
     public int getCapacity() {
         return capacity;
     }
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
-    }
 
-    public double getRating() {
-        return rating;
-    }
-    public void setRating(double rating) {
-        this.rating = rating;
-    }
-
+    @Override
     public void printInfo() {
-        System.out.println("Hospital -> Name: " + name + ", Capacity: " + capacity + ", Rating: " + rating);
+        System.out.println("Hospital -> Name: " + name +
+                ", Capacity: " + capacity +
+                ", Rating: " + rating);
     }
 }
+

@@ -1,12 +1,9 @@
 package healthcare;
 
-public class Ward {
+public class Ward implements Printable {
 
     private int wardNumber;
     private int beds;
-
-    public Ward() {
-    }
 
     public Ward(int wardNumber, int beds) {
         this.wardNumber = wardNumber;
@@ -16,19 +13,18 @@ public class Ward {
     public int getWardNumber() {
         return wardNumber;
     }
-    public void setWardNumber(int wardNumber) {
-        this.wardNumber = wardNumber;
-    }
-
 
     public int getBeds() {
         return beds;
     }
-    public void setBeds(int beds) {
-        this.beds = beds;
-    }
 
+    @Override
     public void printInfo() {
         System.out.println("Ward -> Number: " + wardNumber + ", Beds: " + beds);
+    }
+
+    @Override
+    public String toString() {
+        return "Ward " + wardNumber;
     }
 }
