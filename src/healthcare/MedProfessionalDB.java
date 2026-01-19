@@ -1,0 +1,68 @@
+package healthcare;
+
+import java.sql.*;
+
+public class MedProfessionalDB {
+
+    // CREATE
+    public static void addMedProfessional(MedProfessional m) {
+        String sql = "INSERT INTO medprofessionals(name, specialization, experience) VALUES (?, ?, ?)";
+        try (Connection con = Database.connect();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, m.getName());
+            ps.setString(2, m.getSpecialization());
+            ps.setInt(3, m.getExperience());
+            ps.executeUpdate();
+            System.out.println("MedProfessional added!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // READ
+    public static void readMedProfessionals() {
+        String sql = "SELECT * FROM medprofessionals";
+        try (Connection con = Database.connect();
+             Statement st = con.createStatement();
+             ResultSet rs = st.executeQuery(sql)) {
+            System.out.println("ID | Name | Specialization | Experience");
+            while (rs.next()) {
+                System.out.println(
+                        rs.getInt("id") + " " +
+                                rs.getString("name") + " " +
+                                rs.getString("specialization") + " " +
+                                rs.getInt("experience")
+                );
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // UPDATE по имени
+    public static void updateMedExperience(String name, int newExperience) {
+        String sql = "UPDATE medprofessionals SET experience=? WHERE name=?";
+        try (Connection con = Database.connect();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, newExperience);
+            ps.setString(2, name);
+            ps.executeUpdate();
+            System.out.println("MedProfessional experience updated!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // DELETE по имени
+    public static void deleteMedProfessional(String name) {
+        String sql = "DELETE FROM medprofessionals WHERE name=?";
+        try (Connection con = Database.connect();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, name);
+            ps.executeUpdate();
+            System.out.println("MedProfessional deleted!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
