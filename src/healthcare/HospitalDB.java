@@ -4,7 +4,6 @@ import java.sql.*;
 
 public class HospitalDB {
 
-    // CREATE
     public static void addHospital(Hospital h) {
         String sql = "INSERT INTO hospitals(name, capacity, rating) VALUES (?, ?, ?)";
         try (Connection con = Database.connect();
@@ -13,13 +12,12 @@ public class HospitalDB {
             ps.setInt(2, h.getCapacity());
             ps.setDouble(3, h.getRating());
             ps.executeUpdate();
-            System.out.println("Hospital added!");
+            System.out.println("\nHospital added!");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    // READ
     public static void readHospitals() {
         String sql = "SELECT * FROM hospitals";
         try (Connection con = Database.connect();
@@ -38,7 +36,6 @@ public class HospitalDB {
         }
     }
 
-    // UPDATE по имени
     public static void updateHospitalRating(String name, double newRating) {
         String sql = "UPDATE hospitals SET rating=? WHERE name=?";
         try (Connection con = Database.connect();
@@ -52,7 +49,6 @@ public class HospitalDB {
         }
     }
 
-    // DELETE по имени
     public static void deleteHospital(String name) {
         String sql = "DELETE FROM hospitals WHERE name=?";
         try (Connection con = Database.connect();

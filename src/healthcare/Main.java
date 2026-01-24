@@ -22,12 +22,12 @@ public class Main {
         PatientDB.readPatients();
 
         // Обновляем возраст пациента
-        PatientDB.UpdatePatient("Artem", 12);  // пример: пациент с id=1
+        PatientDB.UpdatePatient("Artem", 12);
         System.out.println("\n=== PATIENTS AFTER UPDATE ===");
         PatientDB.readPatients();
 
         // Удаляем пациента
-        PatientDB.deletePatient("Talgat");  // пример: удалить Talgat
+        PatientDB.deletePatient("Talgat");
         System.out.println("\n=== PATIENTS AFTER DELETE ===");
         PatientDB.readPatients();
 

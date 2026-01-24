@@ -4,7 +4,6 @@ import java.sql.*;
 
 public class PatientDB {
 
-    // CREATE
     public static void addPatient(Patient p) {
         String sql = "INSERT INTO patients(name, age, ward_number) VALUES (?, ?, ?)";
         try (Connection con = Database.connect();
@@ -19,7 +18,6 @@ public class PatientDB {
         }
     }
 
-    // READ
     public static void readPatients() {
         String sql = "SELECT * FROM patients";
         try (Connection con = Database.connect();
@@ -38,12 +36,12 @@ public class PatientDB {
         }
     }
 
-    // UPDATE по имени
+
     public static void UpdatePatient(String name, int newAge) {
         String sql = "UPDATE patients SET age=? WHERE name=?";
         try (Connection con = Database.connect();
              PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setInt(1, newAge);    // напрямую число, а не p.age
+            ps.setInt(1, newAge);
             ps.setString(2, name);
             ps.executeUpdate();
             System.out.println("\nPatient updated!");
@@ -53,7 +51,6 @@ public class PatientDB {
     }
 
 
-    // DELETE по имени
     public static void deletePatient(String name) {
         String sql = "DELETE FROM patients WHERE name=?";
         try (Connection con = Database.connect();

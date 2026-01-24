@@ -4,7 +4,6 @@ import java.sql.*;
 
 public class MedProfessionalDB {
 
-    // CREATE
     public static void addMedProfessional(MedProfessional m) {
         String sql = "INSERT INTO medprofessionals(name, specialization, experience) VALUES (?, ?, ?)";
         try (Connection con = Database.connect();
@@ -19,7 +18,7 @@ public class MedProfessionalDB {
         }
     }
 
-    // READ
+
     public static void readMedProfessionals() {
         String sql = "SELECT * FROM medprofessionals";
         try (Connection con = Database.connect();
@@ -39,7 +38,6 @@ public class MedProfessionalDB {
         }
     }
 
-    // UPDATE по имени
     public static void updateMedExperience(String name, int newExperience) {
         String sql = "UPDATE medprofessionals SET experience=? WHERE name=?";
         try (Connection con = Database.connect();
@@ -53,7 +51,6 @@ public class MedProfessionalDB {
         }
     }
 
-    // DELETE по имени
     public static void deleteMedProfessional(String name) {
         String sql = "DELETE FROM medprofessionals WHERE name=?";
         try (Connection con = Database.connect();
