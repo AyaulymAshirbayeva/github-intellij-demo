@@ -51,8 +51,6 @@ public class Main {
         System.out.println("\n=== HOSPITALS ===");
         HospitalDB.readHospitals();
 
-        System.out.println("\n=== HOSPITALS ===");
-        HospitalDB.readHospitals();
 
         HospitalDB.updateHospitalRating("Altai Clinic", 4.9);
         System.out.println("\n=== HOSPITALS AFTER UPDATE ===");
