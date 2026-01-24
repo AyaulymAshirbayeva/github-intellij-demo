@@ -59,7 +59,7 @@ public class MedProfessionalDB {
             ps.executeUpdate();
             System.out.println("MedProfessional deleted!");
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace();  //for git
         }
     }
 }
