@@ -24,7 +24,6 @@ public class MedProfessionalDB {
         try (Connection con = Database.connect();
              Statement st = con.createStatement();
              ResultSet rs = st.executeQuery(sql)) {
-            System.out.println("ID | Name | Specialization | Experience");
             while (rs.next()) {
                 System.out.println(
                         rs.getInt("id") + " " +

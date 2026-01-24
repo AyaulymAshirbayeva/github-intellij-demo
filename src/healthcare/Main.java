@@ -17,11 +17,11 @@ public class Main {
         System.out.println("\n=== PATIENTS ===");
         PatientDB.readPatients();
 
-        PatientDB.UpdatePatient("Artem", 12);
+        PatientDB.UpdatePatient("Svetlana", 72);
         System.out.println("\n=== PATIENTS AFTER UPDATE ===");
         PatientDB.readPatients();
 
-        PatientDB.deletePatient("Talgat");
+        PatientDB.deletePatient("Liza");
         System.out.println("\n=== PATIENTS AFTER DELETE ===");
         PatientDB.readPatients();
 
@@ -34,11 +34,11 @@ public class Main {
         System.out.println("\n=== MED PROFESSIONALS ===");
         MedProfessionalDB.readMedProfessionals();
 
-        MedProfessionalDB.updateMedExperience("Adina Sagynbekova", 12);
+        MedProfessionalDB.updateMedExperience("Adina Sagynbekova", 13);
         System.out.println("\n=== MED PROFESSIONALS AFTER UPDATE ===");
         MedProfessionalDB.readMedProfessionals();
 
-        MedProfessionalDB.deleteMedProfessional("Zhansaya Spash");
+        MedProfessionalDB.deleteMedProfessional("Dariya Sharipkali");
         System.out.println("\n=== MED PROFESSIONALS AFTER DELETE ===");
         MedProfessionalDB.readMedProfessionals();
 
@@ -54,12 +54,12 @@ public class Main {
         System.out.println("\n=== HOSPITALS ===");
         HospitalDB.readHospitals();
 
-        HospitalDB.updateHospitalRating("№1 Hospital", 4.7);
+        HospitalDB.updateHospitalRating("Altai Clinic", 4.9);
         System.out.println("\n=== HOSPITALS AFTER UPDATE ===");
         HospitalDB.readHospitals();
 
 
-        HospitalDB.deleteHospital("Medical Assistance Group");
+        HospitalDB.deleteHospital("№1 Hospital");
         System.out.println("\n=== HOSPITALS AFTER DELETE ===");
         HospitalDB.readHospitals();
 
