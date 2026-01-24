@@ -13,7 +13,7 @@ public class PatientDB {
             ps.setInt(2, p.getAge());
             ps.setInt(3, p.getWard().getWardNumber());
             ps.executeUpdate();
-            System.out.println("Patient added!");
+            System.out.println("\nPatient added!");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -39,14 +39,14 @@ public class PatientDB {
     }
 
     // UPDATE по имени
-    public static void updatePatient(String name, int newAge) {
+    public static void UpdatePatient(String name, int newAge) {
         String sql = "UPDATE patients SET age=? WHERE name=?";
         try (Connection con = Database.connect();
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, newAge);    // напрямую число, а не p.age
             ps.setString(2, name);
             ps.executeUpdate();
-            System.out.println("Patient updated!");
+            System.out.println("\nPatient updated!");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -60,7 +60,7 @@ public class PatientDB {
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, name);
             ps.executeUpdate();
-            System.out.println("Patient deleted!");
+            System.out.println("\nPatient deleted!");
         } catch (Exception e) {
             e.printStackTrace();
         }

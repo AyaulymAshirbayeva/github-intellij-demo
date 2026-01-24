@@ -22,12 +22,12 @@ public class Main {
         PatientDB.readPatients();
 
         // Обновляем возраст пациента
-        PatientDB.updatePatientAge(1, 12);  // пример: пациент с id=1
+        PatientDB.UpdatePatient("Artem", 12);  // пример: пациент с id=1
         System.out.println("\n=== PATIENTS AFTER UPDATE ===");
         PatientDB.readPatients();
 
         // Удаляем пациента
-        PatientDB.deletePatient(3);  // пример: удалить Talgat
+        PatientDB.deletePatient("Talgat");  // пример: удалить Talgat
         System.out.println("\n=== PATIENTS AFTER DELETE ===");
         PatientDB.readPatients();
 
@@ -42,12 +42,12 @@ public class Main {
         MedProfessionalDB.readMedProfessionals();
 
         // Обновляем опыт
-        MedProfessionalDB.updateMedExperience(1, 12);
+        MedProfessionalDB.updateMedExperience("Adina Sagynbekova", 12);
         System.out.println("\n=== MED PROFESSIONALS AFTER UPDATE ===");
         MedProfessionalDB.readMedProfessionals();
 
         // Удаляем врача
-        MedProfessionalDB.deleteMedProfessional(2);
+        MedProfessionalDB.deleteMedProfessional("Zhansaya Spash");
         System.out.println("\n=== MED PROFESSIONALS AFTER DELETE ===");
         MedProfessionalDB.readMedProfessionals();
 
@@ -64,12 +64,11 @@ public class Main {
         System.out.println("\n=== HOSPITALS ===");
         HospitalDB.readHospitals();
 
-        // Обновляем рейтинг по имени
         HospitalDB.updateHospitalRating("№1 Hospital", 4.7);
         System.out.println("\n=== HOSPITALS AFTER UPDATE ===");
         HospitalDB.readHospitals();
 
-        // Удаляем больницу по имени
+
         HospitalDB.deleteHospital("Medical Assistance Group");
         System.out.println("\n=== HOSPITALS AFTER DELETE ===");
         HospitalDB.readHospitals();

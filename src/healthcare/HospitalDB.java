@@ -25,12 +25,11 @@ public class HospitalDB {
         try (Connection con = Database.connect();
              Statement st = con.createStatement();
              ResultSet rs = st.executeQuery(sql)) {
-            System.out.println("ID | Name | Capacity | Rating");
             while (rs.next()) {
                 System.out.println(
                         rs.getInt("id") + " " +
                                 rs.getString("name") + " " +
-                                rs.getInt("capacity") + " " +
+                                rs.getInt("capacity" ) + " " +
                                 rs.getDouble("rating")
                 );
             }
@@ -47,7 +46,7 @@ public class HospitalDB {
             ps.setDouble(1, newRating);
             ps.setString(2, name);
             ps.executeUpdate();
-            System.out.println("Hospital rating updated!");
+            System.out.println("\nHospital rating updated!");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -60,7 +59,7 @@ public class HospitalDB {
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, name);
             ps.executeUpdate();
-            System.out.println("Hospital deleted!");
+            System.out.println("\nHospital deleted!");
         } catch (Exception e) {
             e.printStackTrace();
         }
