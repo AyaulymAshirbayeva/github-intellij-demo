@@ -3,6 +3,16 @@ package healthcare;
 import java.sql.*;
 
 public class HospitalDB {
+    public static void clearHospitals() {
+        String sql = "TRUNCATE TABLE hospitals RESTART IDENTITY";
+        try (Connection con = Database.connect();
+             Statement st = con.createStatement()) {
+            st.executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public static void addHospital(Hospital h) {
         String sql = "INSERT INTO hospitals(name, capacity, rating) VALUES (?, ?, ?)";
@@ -19,7 +29,7 @@ public class HospitalDB {
     }
 
     public static void readHospitals() {
-        String sql = "SELECT * FROM hospitals";
+        String sql = "SELECT * FROM hospitals order by id";
         try (Connection con = Database.connect();
              Statement st = con.createStatement();
              ResultSet rs = st.executeQuery(sql)) {

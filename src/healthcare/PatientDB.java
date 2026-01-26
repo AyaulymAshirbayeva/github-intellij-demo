@@ -3,6 +3,15 @@ package healthcare;
 import java.sql.*;
 
 public class PatientDB {
+    public static void clearPatients() {
+        String sql = "TRUNCATE TABLE patients RESTART IDENTITY";
+        try (Connection con = Database.connect();
+             Statement st = con.createStatement()) {
+            st.executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void addPatient(Patient p) {
         String sql = "INSERT INTO patients(name, age, ward_number) VALUES (?, ?, ?)";
@@ -19,7 +28,7 @@ public class PatientDB {
     }
 
     public static void readPatients() {
-        String sql = "SELECT * FROM patients";
+        String sql = "SELECT * FROM patients order by id";
         try (Connection con = Database.connect();
              Statement st = con.createStatement();
              ResultSet rs = st.executeQuery(sql)) {

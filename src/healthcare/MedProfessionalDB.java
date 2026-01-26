@@ -3,6 +3,16 @@ package healthcare;
 import java.sql.*;
 
 public class MedProfessionalDB {
+    public static void clearMedProfessionals() {
+        String sql = "TRUNCATE TABLE medprofessionals RESTART IDENTITY";
+        try (Connection con = Database.connect();
+             Statement st = con.createStatement()) {
+            st.executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public static void addMedProfessional(MedProfessional m) {
         String sql = "INSERT INTO medprofessionals(name, specialization, experience) VALUES (?, ?, ?)";
@@ -20,7 +30,7 @@ public class MedProfessionalDB {
 
 
     public static void readMedProfessionals() {
-        String sql = "SELECT * FROM medprofessionals";
+        String sql = "SELECT * FROM medprofessionals order by id";
         try (Connection con = Database.connect();
              Statement st = con.createStatement();
              ResultSet rs = st.executeQuery(sql)) {
@@ -38,7 +48,7 @@ public class MedProfessionalDB {
     }
 
     public static void updateMedExperience(String name, int newExperience) {
-        String sql = "UPDATE medprofessionals SET experience=? WHERE name=?";
+        String sql = "UPDATE medprofessionals SET experience=? WHERE name=? ";
         try (Connection con = Database.connect();
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, newExperience);
