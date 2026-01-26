@@ -21,7 +21,6 @@ public class PatientDB {
             ps.setInt(2, p.getAge());
             ps.setInt(3, p.getWard().getWardNumber());
             ps.executeUpdate();
-            System.out.println("\nPatient added!");
         } catch (Exception e) {
             e.printStackTrace();
         }

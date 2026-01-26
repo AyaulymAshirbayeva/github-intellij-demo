@@ -22,7 +22,6 @@ public class HospitalDB {
             ps.setInt(2, h.getCapacity());
             ps.setDouble(3, h.getRating());
             ps.executeUpdate();
-            System.out.println("\nHospital added!");
         } catch (Exception e) {
             e.printStackTrace();
         }

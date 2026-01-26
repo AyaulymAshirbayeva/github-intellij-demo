@@ -22,7 +22,6 @@ public class MedProfessionalDB {
             ps.setString(2, m.getSpecialization());
             ps.setInt(3, m.getExperience());
             ps.executeUpdate();
-            System.out.println("MedProfessional added!");
         } catch (Exception e) {
             e.printStackTrace();
         }
