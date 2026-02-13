@@ -1,11 +1,11 @@
 package healthcare.repository;
 
-import healthcare.entity.Hospital;
+import healthcare.entity.MedProfessional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface hospitalRepository extends JpaRepository<Hospital, Long> {
+public interface MedProRepository extends JpaRepository<MedProfessional, Long> {
     // поиск по имени (если понадобится)
-    Hospital findByName(String name);
+    MedProfessional findByName(String name);
 }

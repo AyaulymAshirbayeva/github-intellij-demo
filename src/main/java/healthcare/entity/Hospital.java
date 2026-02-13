@@ -22,6 +22,9 @@ public class Hospital {
         this.rating = rating;
     }
 
+    public Hospital(String name, int capacity, double rating) {
+    }
+
     // Геттеры и сеттеры
     public Long getId() { return id; }
     public String getName() { return name; }

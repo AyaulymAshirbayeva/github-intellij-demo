@@ -1,8 +1,7 @@
 package healthcare.controller;
 
 import healthcare.entity.Hospital;
-import healthcare.repository.hospitalRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import healthcare.service.HospitalService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,44 +9,30 @@ import java.util.List;
 @RestController
 @RequestMapping("/hospitals")
 public class HospitalController {
-
-    @Autowired
-    private hospitalRepository hospitalRepository;
-
-    // GET /patients
+    private final HospitalService hospitalService;
+    public HospitalController(HospitalService hospitalService) {
+        this.hospitalService = hospitalService;
+    }
+    @PostMapping
+    public Hospital addHospital(@RequestBody Hospital hospital) {
+        return hospitalService.createHospital(
+                hospital.getName(),
+                hospital.getCapacity(),
+                hospital.getRating()
+        );
+    }
     @GetMapping
     public List<Hospital> getAllHospitals() {
-        return hospitalRepository.findAll();
+        return hospitalService.getAllHospitals();
     }
-
-    // GET /patients/{id}
-    @GetMapping("/{id}")
-    public Hospital getHospitalById(@PathVariable Long id) {
-        return hospitalRepository.findById(id).orElse(null);
+    @PutMapping("/{name}/rating")
+    public Hospital updateHospitalRating(@PathVariable String name,
+                                         @RequestParam double rating) {
+        return hospitalService.updateRating(name, rating);
     }
-
-    // POST /patients
-    @PostMapping
-    public Hospital createHospital(@RequestBody Hospital hospital) {
-        return hospitalRepository.save(hospital);
-    }
-
-    // PUT /patients/{id}
-    @PutMapping("/{id}")
-    public Hospital updateHospital(@PathVariable Long id, @RequestBody Hospital hospitalDetails) {
-        Hospital hospital = hospitalRepository.findById(id).orElse(null);
-        if (hospital != null) {
-            hospital.setName(hospitalDetails.getName());
-            hospital.setCapacity(hospitalDetails.getCapacity());
-            hospital.setRating(hospitalDetails.getRating());
-            return hospitalRepository.save(hospital);
-        }
-        return null;
-    }
-
-    // DELETE /patients/{id}
-    @DeleteMapping("/{id}")
-    public void deleteHospital(@PathVariable Long id) {
-        hospitalRepository.deleteById(id);
+    @DeleteMapping("/{name}")
+    public void deleteHospital(@PathVariable String name) {
+        hospitalService.deleteHospital(name);
     }
 }
+
