@@ -2,475 +2,208 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Healthcare Management</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            text-align: center;
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .section {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .section h2 {
-            color: #667eea;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #667eea;
-        }
-
-        .section h3 {
-            color: #764ba2;
-            font-size: 1.3rem;
-            margin-top: 30px;
-            margin-bottom: 15px;
-        }
-
-        /* Input Styles */
-        input {
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1rem;
-            margin-right: 10px;
-            margin-bottom: 10px;
-            transition: all 0.3s ease;
-            min-width: 200px;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        /* Button Styles */
-        button {
-            padding: 12px 25px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-right: 5px;
-            margin-bottom: 10px;
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        button:active {
-            transform: translateY(0);
-        }
-
-        /* Primary Button - Patients */
-        .section:nth-child(2) button {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-        }
-
-        /* Secondary Button - Doctors */
-        .section:nth-child(3) button {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: white;
-        }
-
-        /* Tertiary Button - Hospitals */
-        .section:nth-child(4) button {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-            color: white;
-        }
-
-        /* Delete Button */
-        .delete-btn {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-            color: white;
-            padding: 6px 15px;
-            font-size: 0.9rem;
-        }
-
-        /* List Styles */
-        ul {
-            list-style: none;
-            margin-top: 20px;
-        }
-
-        ul li {
-            background: #f8f9fa;
-            padding: 15px 20px;
-            margin-bottom: 10px;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-
-        ul li:hover {
-            background: #e9ecef;
-            transform: translateX(5px);
-        }
-
-        .section:nth-child(2) ul li {
-            border-left-color: #f5576c;
-        }
-
-        .section:nth-child(3) ul li {
-            border-left-color: #00f2fe;
-        }
-
-        .section:nth-child(4) ul li {
-            border-left-color: #43e97b;
-        }
-
-        .list-content {
-            flex: 1;
-            font-size: 1.05rem;
-            color: #333;
-        }
-
-        /* Form Groups */
-        .form-group {
-            margin-bottom: 20px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            .section {
-                padding: 20px;
-            }
-
-            input {
-                width: 100%;
-                margin-right: 0;
-            }
-
-            button {
-                width: 100%;
-                margin-right: 0;
-            }
-
-            ul li {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .delete-btn {
-                margin-top: 10px;
-                width: 100%;
-            }
-        }
-
-        /* Loading Animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .section {
-            animation: fadeIn 0.5s ease;
-        }
-
-        /* Empty State */
-        .empty-state {
-            text-align: center;
-            padding: 30px;
-            color: #999;
-            font-style: italic;
-        }
-    </style>
+    <title>Healthcare Management System</title>
 </head>
 <body>
+<h1>Healthcare Management System</h1>
 
-<div class="container">
-    <h1>🏥 Healthcare Management System</h1>
+<!-- ================= PATIENTS ================= -->
+<h2>Patients</h2>
+<button onclick="loadPatients()">Load Patients</button>
+<ul id="patients"></ul>
 
-    <!-- ================= PATIENTS ================= -->
-    <div class="section">
-        <h2>👥 Patient Management</h2>
+<h3>Add Patient</h3>
+<input id="patientName" placeholder="Name">
+<input id="patientAge" type="number" placeholder="Age">
+<button onclick="createPatient()">Add Patient</button>
 
-        <div class="form-group">
-            <h3>Add New Patient</h3>
-            <input id="pName" placeholder="Patient Name">
-            <input id="pAge" placeholder="Age" type="number">
-            <button onclick="addPatient()">➕ Add Patient</button>
-        </div>
+<!-- ================= MED PROFESSIONALS ================= -->
+<h2>Med Professionals</h2>
+<button onclick="loadDoctors()">Load Doctors</button>
+<ul id="doctors"></ul>
 
-        <h3>Patient List</h3>
-        <button onclick="loadPatients()">🔄 Refresh</button>
-        <ul id="patientsList">
-            <li class="empty-state">No patients found. Click refresh to load.</li>
-        </ul>
-    </div>
+<h3>Add Doctor</h3>
+<input id="doctorName" placeholder="Doctor Name">
+<input id="doctorSpec" placeholder="Specialization">
+<input id="doctorExp" type="number" placeholder="Experience">
+<button onclick="createDoctor()">Add Doctor</button>
 
-    <!-- ================= DOCTORS ================= -->
-    <div class="section">
-        <h2>👨‍⚕️ Doctor Management</h2>
+<!-- ================= HOSPITALS ================= -->
+<h2>Hospitals</h2>
+<button onclick="loadHospitals()">Load Hospitals</button>
+<ul id="hospitals"></ul>
 
-        <button onclick="loadDoctors()">🔄 Refresh</button>
-        <ul id="doctorsList">
-            <li class="empty-state">No doctors found. Click refresh to load.</li>
-        </ul>
+<h3>Update Hospital Rating</h3>
+<input id="hospitalName" placeholder="Hospital Name">
+<input id="hospitalRating" type="number" placeholder="New Rating">
+<button onclick="updateHospitalRating()">Update Rating</button>
 
-        <div class="form-group">
-            <h3>Update Doctor Experience</h3>
-            <input id="dId" placeholder="Doctor ID" type="number">
-            <input id="dExp" placeholder="Years of Experience" type="number">
-            <button onclick="updateDoctor()">✏️ Update Experience</button>
-        </div>
-    </div>
+<!--&lt;!&ndash; ================= APPOINTMENTS ================= &ndash;&gt;-->
+<!--<h2>Appointments</h2>-->
+<!--<button onclick="loadAppointments()">Load Appointments</button>-->
+<!--<ul id="appointments"></ul>-->
 
-    <!-- ================= HOSPITALS ================= -->
-    <div class="section">
-        <h2>🏨 Hospital Management</h2>
-
-        <button onclick="loadHospitals()">🔄 Refresh</button>
-        <ul id="hospitalsList">
-            <li class="empty-state">No hospitals found. Click refresh to load.</li>
-        </ul>
-
-        <div class="form-group">
-            <h3>Update Hospital Rating</h3>
-            <input id="hName" placeholder="Hospital Name">
-            <input id="hRating" placeholder="New Rating (1-5)" type="number" min="1" max="5" step="0.1">
-            <button onclick="updateHospital()">⭐ Update Rating</button>
-        </div>
-    </div>
-</div>
+<!--<h3>Create Appointment</h3>-->
+<!--<input id="appPatient" placeholder="Patient Name">-->
+<!--<input id="appDoctor" placeholder="Doctor Name">-->
+<!--<input id="appHospital" placeholder="Hospital Name">-->
+<!--<input id="appDateTime" type="datetime-local">-->
+<!--<button onclick="createAppointment()">Create Appointment</button>-->
 
 <script>
+    const BASE_URL = "http://localhost:8081";
 
     // ================= PATIENTS =================
-
-    function loadPatients() {
-        fetch("/patients")
-            .then(r => r.json())
-            .then(data => {
-                let list = document.getElementById("patientsList");
-                list.innerHTML = "";
-
-                if (data.length === 0) {
-                    list.innerHTML = '<li class="empty-state">No patients in the system.</li>';
-                    return;
-                }
-
-                data.forEach(p => {
-                    let li = document.createElement("li");
-
-                    li.innerHTML =
-                        '<span class="list-content"><strong>' + p.name + '</strong> (Age: ' + p.age + ')</span>' +
-                        '<button class="delete-btn" onclick="deletePatient(' + p.id + ')">🗑️ Delete</button>';
-
-                    list.appendChild(li);
-                });
-            })
-            .catch(err => {
-                console.error('Error loading patients:', err);
-                document.getElementById("patientsList").innerHTML =
-                    '<li class="empty-state">Error loading patients. Make sure the server is running.</li>';
-            });
+    async function loadPatients() {
+        const res = await fetch(`${BASE_URL}/patients`);
+        const data = await res.json();
+        const list = document.getElementById("patients");
+        list.innerHTML = "";
+        data.forEach(p => {
+            list.innerHTML += `
+        <li>
+            ${p.name} (${p.age})
+            <button onclick="deletePatient('${p.name}')">Delete</button>
+            <button onclick="updatePatientPrompt('${p.name}', ${p.age})">Update</button>
+        </li>`;
+        });
     }
 
-    function addPatient() {
-        let name = document.getElementById("pName").value;
-        let age = document.getElementById("pAge").value;
-
-        if (!name || !age) {
-            alert("Please fill in both name and age!");
-            return;
-        }
-
-        fetch("/patients", {
+    async function createPatient() {
+        const name = document.getElementById("patientName").value;
+        const age = Number(document.getElementById("patientAge").value);
+        await fetch(`${BASE_URL}/patients`, {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({
-                name: name,
-                age: parseInt(age),
-            })
-        })
-            .then(() => {
-                loadPatients();
-                document.getElementById("pName").value = "";
-                document.getElementById("pAge").value = "";
-            })
-            .catch(err => {
-                console.error('Error adding patient:', err);
-                alert('Error adding patient. Please try again.');
-            });
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({name, age})
+        });
+        loadPatients();
     }
 
-    function deletePatient(id) {
-        if (!confirm("Are you sure you want to delete this patient?")) {
-            return;
+    async function deletePatient(name) {
+        await fetch(`${BASE_URL}/patients/delete/${name}`, { method: "DELETE" });
+        loadPatients();
+    }
+
+    function updatePatientPrompt(name, age) {
+        const newAge = prompt("New age:", age);
+        if(newAge) updatePatient(name, Number(newAge));
+    }
+
+    async function updatePatient(name, newAge) {
+        await fetch(`${BASE_URL}/patients/update/${name}?age=${newAge}`, { method: "PUT" });
+        loadPatients();
+    }
+
+    // ================= MED PROFESSIONALS =================
+
+    // Загрузка списка врачей
+    async function loadDoctors() {
+        const res = await fetch(`${BASE_URL}/meds`);
+        const data = await res.json();
+        const list = document.getElementById("doctors");
+        list.innerHTML = "";
+        data.forEach(d => {
+            list.innerHTML += `
+        <li>
+            ${d.name} | ${d.specialization} | ${d.experience} years
+            <button onclick="deleteDoctor('${d.name}')">Delete</button>
+            <button onclick="updateDoctorPrompt('${d.name}', ${d.experience})">Update</button>
+        </li>`;
+        });
+    }
+
+    // Создание нового врача
+    async function createDoctor() {
+        const name = document.getElementById("doctorName").value;
+        const specialization = document.getElementById("doctorSpec").value;
+        const experience = parseInt(document.getElementById("doctorExp").value);
+
+        await fetch(`${BASE_URL}/meds`, {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, specialization, experience })
+        });
+
+        await loadDoctors();
+    }
+
+    // Удаление врача по имени
+    async function deleteDoctor(name) {
+        await fetch(`${BASE_URL}/meds/${encodeURIComponent(name)}`, { method: "DELETE" });
+        loadDoctors();
+    }
+
+    // Запрос нового опыта
+    function updateDoctorPrompt(name, oldExp) {
+        const newExp = parseInt(prompt("New experience:", oldExp));
+        if (!isNaN(newExp)) {
+            updateDoctor(name, newExp);
         }
-
-        fetch("/patients/" + id, { method: "DELETE" })
-            .then(() => loadPatients())
-            .catch(err => {
-                console.error('Error deleting patient:', err);
-                alert('Error deleting patient. Please try again.');
-            });
     }
 
-
-    // ================= DOCTORS =================
-
-    function loadDoctors() {
-        fetch("/doctors")
-            .then(res => res.json())
-            .then(data => {
-                let list = document.getElementById("doctorsList");
-                list.innerHTML = "";
-
-                if (data.length === 0) {
-                    list.innerHTML = '<li class="empty-state">No doctors in the system.</li>';
-                    return;
-                }
-
-                data.forEach(d => {
-                    let li = document.createElement("li");
-                    li.innerHTML =
-                        '<span class="list-content">' +
-                        '<strong>Dr. ' + d.name + '</strong> | ' +
-                        '🏥 ' + d.specialization + ' | ' +
-                        '📅 Experience: ' + d.experience + ' years | ' +
-                        '🏨 Hospital: ' + d.hospital.name +
-                        '</span>';
-                    list.appendChild(li);
-                });
-            })
-            .catch(err => {
-                console.error('Error loading doctors:', err);
-                document.getElementById("doctorsList").innerHTML =
-                    '<li class="empty-state">Error loading doctors. Make sure the server is running.</li>';
-            });
-    }
-
-    function updateDoctor() {
-        let id = document.getElementById("dId").value;
-        let exp = document.getElementById("dExp").value;
-
-        if (!id || !exp) {
-            alert("Please fill in both Doctor ID and Experience!");
-            return;
-        }
-
-        fetch("/doctors/" + id + "?experience=" + exp, {
+    // Обновление опыта врача по имени
+    async function updateDoctor(name, newExp) {
+        await fetch(`${BASE_URL}/meds/${encodeURIComponent(name)}/experience?experience=${newExp}`, {
             method: "PUT"
-        })
-            .then(() => {
-                loadDoctors();
-                document.getElementById("dId").value = "";
-                document.getElementById("dExp").value = "";
-            })
-            .catch(err => {
-                console.error('Error updating doctor:', err);
-                alert('Error updating doctor. Please check the ID and try again.');
-            });
-    }
+        });
 
+
+        loadDoctors();
+    }
 
     // ================= HOSPITALS =================
-
-    function loadHospitals() {
-        fetch("/hospitals")
-            .then(r => r.json())
-            .then(data => {
-                let list = document.getElementById("hospitalsList");
-                list.innerHTML = "";
-
-                if (data.length === 0) {
-                    list.innerHTML = '<li class="empty-state">No hospitals in the system.</li>';
-                    return;
-                }
-
-                data.forEach(h => {
-                    let li = document.createElement("li");
-                    li.innerHTML =
-                        '<span class="list-content">' +
-                        '<strong>' + h.name + '</strong> | ' +
-                        '⭐ Rating: ' + h.rating + '/5 | ' +
-                        '🛏️ Capacity: ' + h.capacity + ' beds' +
-                        '</span>';
-                    list.appendChild(li);
-                });
-            })
-            .catch(err => {
-                console.error('Error loading hospitals:', err);
-                document.getElementById("hospitalsList").innerHTML =
-                    '<li class="empty-state">Error loading hospitals. Make sure the server is running.</li>';
-            });
+    async function loadHospitals() {
+        const res = await fetch(`${BASE_URL}/hospitals`);
+        const data = await res.json();
+        const list = document.getElementById("hospitals");
+        list.innerHTML = "";
+        data.forEach(h => {
+            list.innerHTML += `
+        <li>
+            ${h.name} | Doctors: ${h.capacity} | Rating: ${h.rating}
+        </li>`;
+        });
     }
 
-    function updateHospital() {
-        let name = document.getElementById("hName").value;
-        let rating = document.getElementById("hRating").value;
-
-        if (!name || !rating) {
-            alert("Please fill in both Hospital Name and Rating!");
-            return;
-        }
-
-        fetch("/hospitals/" + name + "/rating?rating=" + rating, {
-            method: "PUT"
-        })
-            .then(() => {
-                loadHospitals();
-                document.getElementById("hName").value = "";
-                document.getElementById("hRating").value = "";
-            })
-            .catch(err => {
-                console.error('Error updating hospital:', err);
-                alert('Error updating hospital. Please check the name and try again.');
-            });
+    async function updateHospitalRating() {
+        const name = document.getElementById("hospitalName").value;
+        const rating = Number(document.getElementById("hospitalRating").value);
+        await fetch(`${BASE_URL}/hospitals/${name}/rating?rating=${rating}`, { method: "PUT" });
+        loadHospitals();
     }
 
+    // // ================= APPOINTMENTS =================
+    // async function loadAppointments() {
+    //     const res = await fetch(BASE_URL + "/appointments");
+    //     const data = await res.json();
+    //     const list = document.getElementById("appointments");
+    //     list.innerHTML = "";
+    //     data.forEach(a => {
+    //         list.innerHTML += `<li>
+    //         Patient: ${a.patient.name} → Doctor: ${a.doctor.name} → Hospital: ${a.hospital.name} → Date: ${a.dateTime}
+    //         <button onclick="deleteAppointment(${a.id})">Delete</button>
+    //     </li>`;
+    //     });
+    // }
+    // async function createAppointment() {
+    //     const patientName = document.getElementById("appPatient").value;
+    //     const doctorName = document.getElementById("appDoctor").value;
+    //     const hospitalName = document.getElementById("appHospital").value;
+    //     const dateTime = document.getElementById("appDateTime").value;
+    //
+    //     await fetch(BASE_URL + "/appointments", {
+    //         method: "POST",
+    //         headers: { 'Content-Type': 'application/json' },
+    //         body: JSON.stringify({ patientName, doctorName, hospitalName, dateTime })
+    //     });
+    //
+    //     loadAppointments();
+    // }
+    // async function deleteAppointment(id) {
+    //     await fetch(BASE_URL + "/appointments/" + id, { method: "DELETE" });
+    //     loadAppointments();
+    // }
 </script>
-
 </body>
 </html>

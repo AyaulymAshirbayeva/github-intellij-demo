@@ -20,17 +20,13 @@ public class HospitalService {
         return hospitalRepository.findAll();
     }
 
-    // Builder Pattern используется здесь
     public Hospital createHospital(String name, int capacity, double rating) {
-
         Hospital hospital = new HospitalBuilder()
                 .setName(name)
                 .setCapacity(capacity)
                 .setRating(rating)
                 .build();
-
-        return hospitalRepository.save(hospital);
-    }
+        return hospitalRepository.save(hospital);}
 
     public Hospital updateRating(String name, double newRating) {
         Hospital hospital = hospitalRepository.findByName(name);

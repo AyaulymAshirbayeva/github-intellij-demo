@@ -9,41 +9,41 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String date;   // можно просто строку для простоты
-
+    // Связь с пациентом
     @ManyToOne
-    @JoinColumn(name = "patient_id", nullable = false)
+    @JoinColumn(name = "patient_id")
     private Patient patient;
 
-    // --- связь с врачом ---
+    // Связь с врачом
     @ManyToOne
-    @JoinColumn(name = "doctor_id", nullable = false)
+    @JoinColumn(name = "doctor_id")
     private MedProfessional doctor;
 
-    // --- связь с больницей ---
+    // Связь с больницей
     @ManyToOne
-    @JoinColumn(name = "hospital_id", nullable = false)
+    @JoinColumn(name = "hospital_id")
     private Hospital hospital;
+
+    private String dateTime;
 
     public Appointment() {}
 
-    public Appointment(String date, Patient patient,
-                       MedProfessional doctor, Hospital hospital) {
-        this.date = date;
+    public Appointment(Patient patient, MedProfessional doctor, Hospital hospital, String dateTime) {
         this.patient = patient;
         this.doctor = doctor;
         this.hospital = hospital;
+        this.dateTime = dateTime;
     }
 
-    public String getDate() { return date; }
-    public void setDate(String date) { this.date = date; }
-
+    // getters/setters
+    public Long getId() { return id; }
     public Patient getPatient() { return patient; }
-    public void setPatient(Patient patient) { this.patient = patient; }
-
     public MedProfessional getDoctor() { return doctor; }
-    public void setDoctor(MedProfessional doctor) { this.doctor = doctor; }
-
     public Hospital getHospital() { return hospital; }
+    public String getDateTime() { return dateTime; }
+
+    public void setPatient(Patient patient) { this.patient = patient; }
+    public void setDoctor(MedProfessional doctor) { this.doctor = doctor; }
     public void setHospital(Hospital hospital) { this.hospital = hospital; }
+    public void setDateTime(String dateTime) { this.dateTime = dateTime; }
 }

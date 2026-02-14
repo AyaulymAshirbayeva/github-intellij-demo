@@ -1,12 +1,18 @@
 package healthcare.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "medprofessionals")
 public class MedProfessional {
+
+    @OneToMany(mappedBy = "doctor")
+    @JsonManagedReference
+    private List<Appointment> appointments;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

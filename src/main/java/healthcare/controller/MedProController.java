@@ -5,14 +5,14 @@ import healthcare.service.MedService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/doctors")
-public class DoctorController {
+@RequestMapping("/meds")
+public class MedProController {
 
     private final MedService service;
 
-    public DoctorController(MedService service) {
+    public MedProController(MedService service) {
         this.service = service;
     }
 
@@ -22,13 +22,13 @@ public class DoctorController {
     }
 
     @PostMapping
-    public MedProfessional add(@RequestBody MedProfessional doc) {
-        return service.addMedProfessional(doc);
+    public MedProfessional addDoctor(@RequestBody MedProfessional doctor) {
+        return service.addMedProfessional(doctor);
     }
 
     @PutMapping("/{name}/experience")
-    public MedProfessional updateExperience(@PathVariable String name, @RequestParam int newExp) {
-        return service.updateExperience(name, newExp);
+    public MedProfessional updateExperience(@PathVariable String name, @RequestParam int experience) {
+        return service.updateExperience(name, experience);
     }
 
     @DeleteMapping("/{name}")

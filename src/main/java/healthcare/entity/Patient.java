@@ -1,10 +1,17 @@
 package healthcare.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import java.util.List;
+@JsonIgnoreProperties({"appointments"})
 @Entity
 @Table(name = "patients")
 public class Patient {
+    @OneToMany(mappedBy = "patient")
+    @JsonManagedReference
+    private List<Appointment> appointments;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

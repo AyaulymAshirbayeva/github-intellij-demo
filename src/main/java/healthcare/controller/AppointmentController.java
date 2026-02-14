@@ -16,13 +16,18 @@ public class AppointmentController {
         this.appointmentService = appointmentService;
     }
 
-    @PostMapping
-    public Appointment create(@RequestBody Appointment appointment) {
-        return appointmentService.create(appointment);
+    @GetMapping
+    public List<Appointment> getAppointments() {
+        return appointmentService.getAllAppointments();
     }
 
-    @GetMapping
-    public List<Appointment> getAll() {
-        return appointmentService.getAll();
+    @PostMapping
+    public Appointment createAppointment(@RequestBody Appointment appointment) {
+        return appointmentService.addAppointment(appointment);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteAppointment(@PathVariable Long id) {
+        appointmentService.deleteAppointment(id);
     }
 }

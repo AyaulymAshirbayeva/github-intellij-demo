@@ -1,10 +1,23 @@
 package healthcare.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import healthcare.Printable;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "hospitals")
-public class Hospital {
+
+public class Hospital implements Printable {
+    @Override
+    public void printInfo() {
+        System.out.println("Hospital: " + name);
+    }
+
+    @OneToMany(mappedBy = "hospital")
+    @JsonManagedReference
+    private List<Appointment> appointments;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
